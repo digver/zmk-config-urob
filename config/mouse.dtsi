@@ -33,9 +33,14 @@
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
-#define U_BTN1 &mkp MB1
-#define U_BTN2 &mkp MB2
-#define U_BTN3 &mkp MB3
+#define U_BN_1 &mkp MB1
+#define U_BN_2 &mkp MB2
+#define U_BN_3 &mkp MB3
+
+#define U_BN_L &mkp LCLK
+#define U_BN_M &mkp MCLK
+#define U_BN_R &mkp RCLK
+
 #define U_MS_U &mmv MOVE_UP
 #define U_MS_D &mmv MOVE_DOWN
 #define U_MS_L &mmv MOVE_LEFT
