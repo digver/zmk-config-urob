@@ -19,7 +19,7 @@
 #define UC 5
 #define MOUSE 6
 
-#include "combos.dtsi"  // must be sourced after layer-shortcuts
+// #include "combos.dtsi"  // must be sourced after layer-shortcuts
 #include "mouse.dtsi"
 #include "extra_keys.h"
 
