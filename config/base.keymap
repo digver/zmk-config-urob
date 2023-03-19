@@ -12,13 +12,13 @@
 // #include "../zmk-nodefree-config/international_chars/greek.dtsi"
 // #include "../zmk-nodefree-config/international_chars/german.dtsi"
 
-#define DEF 0
-#define NAV 1
-#define FN 2
-#define NUM 3
-#define SYS 4
-#define UC 5
-#define MOUSE 6
+#define BASE 0
+#define NAVI 1
+#define FUNC 2
+#define NUMS 3
+#define UTIL 4
+#define UNIC 5
+#define MAUS 6
 
 #include "combos.dtsi"  // must be sourced after layer-shortcuts
 #include "mouse.dtsi"
