@@ -38,8 +38,8 @@
 #define U_BN_3 &mkp MB3
 
 #define U_BN_L U_BN_1
-#define U_BN_M U_BN_2
-#define U_BN_R U_BN_3
+#define U_BN_M U_BN_3
+#define U_BN_R U_BN_2
 
 #define U_MS_U &mmv MOVE_UP
 #define U_MS_D &mmv MOVE_DOWN
