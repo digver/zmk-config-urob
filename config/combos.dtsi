@@ -34,8 +34,8 @@ ZMK_COMBO(rpar,  &kp RPAR,      RM2 RM3,     BASE NAV NUM, COMBO_TERM_FAST)
 ZMK_COMBO(lbrk,  &kp LBKT,      RB1 RB2,     BASE NAV NUM, COMBO_TERM_FAST)
 ZMK_COMBO(rbrk,  &kp RBKT,      RB2 RB3,     BASE NAV NUM, COMBO_TERM_FAST)
 
-ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     BASE NAV NUM, COMBO_TERM_SLOW)
-ZMK_COMBO(cpgrk, &sls 0,        RT1 RT2 RT3, BASE NAV NUM, COMBO_TERM_SLOW)
+//ZMK_COMBO(grk,   &sl UC,        RT1 RT3,     BASE NAV NUM, COMBO_TERM_SLOW)
+//ZMK_COMBO(cpgrk, &sls 0,        RT1 RT2 RT3, BASE NAV NUM, COMBO_TERM_SLOW)
 
 /* Other symbols (vertical combos) */
 ZMK_COMBO(at,    &kp AT,        LT3 LM3,     BASE NAV NUM, COMBO_TERM_SLOW)
