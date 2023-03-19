@@ -35,11 +35,11 @@ ZMK_CONDITIONAL_LAYER(FUNC NUM, UTIL)    // FN + NUM --> UTIL
     hold-trigger-key-positions = <0>;  // tap on interrupt
 };
 
-#define NAV_LEFT  &mt HOME     LEFT    // tap: left  | long-tap: beginning of line
-#define NAV_RIGHT &mt END      RIGHT   // tap: right | long-tap: end       of line
+#define NAV_LFT   &mt HOME     LEFT    // tap: left  | long-tap: beginning of line
+#define NAV_RHT   &mt END      RIGHT   // tap: right | long-tap: end       of line
 #define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
-#define NAV_DOWN  &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
-#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
+#define NAV_DWN   &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
+#define NAV_BSC   &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
 #define XXX &none
@@ -226,21 +226,21 @@ ZMK_LAYER(base,
 //├─────────────┼─────────────┼─────────────┼─────────────┼────────────┤  ├──────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp Z         &kp X         &kp C         &kp D         &kp V           &kp K      &kp H         &comma_morph  &dot_morph    &qexcl
 //╰─────────────┼─────────────┴─────────────┼─────────────┼────────────┤  ├──────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              &lt_spc NAV 0 &lt FUNC RET      NUM_WORD   &ss_cw
+                                              &lt_spc NAV 0 &lt FUNC RET    NUM_WORD   &ss_cw
 //                                          ╰─────────────┴────────────╯  ╰──────────┴─────────────╯
 )
 
 // layer 1
 ZMK_LAYER(navi,
-//╭──────────┬──────────┬─────────────┬───────────┬─────╮ ╭───────────┬──────────┬──────────┬────────── ┬──────── ╮
-    ___        ___        &kp LS(TAB)   &swap       ___     &kp PG_UP   NAV_BSPC   NAV_UP     NAV_DEL     ___
-//├──────────┼──────────┼─────────────┼───────────┼─────┤ ├───────────┼──────────┼──────────┼────────── ┼──────── ┤
-    &sk LGUI   &sk LALT   &sk LCTRL     &sk LSHFT   ___     &kp PG_DN   NAV_LEFT   NAV_DOWN   NAV_RIGHT   &kp RET
-//├──────────┼──────────┼─────────────┼───────────┼─────┤ ├───────────┼──────────┼──────────┼────────── ┼──────── ┤
-    ___        ___        ___           ___         ___     &kp INS     &kp TAB    &kp LT     &kp GT      ___
-//╰──────────┼──────────┴─────────────┼───────────┼─────┤ ├───────────┼──────────┼──────────┴────────── ───────── ╯
+//╭──────────┬──────────┬─────────────┬───────────┬─────╮ ╭───────────┬─────────┬─────────┬─────────┬──────── ╮
+    ___        ___        &kp LS(TAB)   &swap       ___     &kp PG_UP   NAV_BSC   NAV_UP    NAV_DEL   ___
+//├──────────┼──────────┼─────────────┼───────────┼─────┤ ├───────────┼─────────┼─────────┼─────────┼──────── ┤
+    &sk LGUI   &sk LALT   &sk LCTRL     &sk LSHFT   ___     &kp PG_DN   NAV_LFT   NAV_DWN   NAV_RHT   &kp RET
+//├──────────┼──────────┼─────────────┼───────────┼─────┤ ├───────────┼─────────┼─────────┼─────────┼──────── ┤
+    ___        ___        ___           ___         ___     &kp INS     &kp TAB   &kp LT    &kp GT    ___
+//╰──────────┼──────────┴─────────────┼───────────┼─────┤ ├───────────┼─────────┼─────────┴────────────────── ╯
                                         ___         ___        ___       CANCEL
-//                                    ╰───────────┴─────╯ ╰───────────┴──────────╯
+//                                    ╰───────────┴─────╯ ╰───────────┴─────────╯
 )
 
 // layer 2
