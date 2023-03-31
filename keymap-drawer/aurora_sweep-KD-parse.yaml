@@ -1,0 +1,175 @@
+layout: {qmk_keyboard: ferris/sweep}
+layers:
+  base:
+  - [Q, W, F, P, B, J, L, U, Y, '''']
+  - - {t: A, h: LGUI}
+    - {t: R, h: LALT}
+    - {t: S, h: LCTRL}
+    - {t: T, h: LSHFT}
+    - G
+    - M
+    - {t: N, h: RSHFT}
+    - {t: E, h: LCTRL}
+    - {t: I, h: LALT}
+    - {t: O, h: APP}
+  - [Z, X, C, D, V, K, H, SEMI COMMA, COLON PERIOD, EXCL QUEST]
+  - - {t: BSPC, h: navi}
+    - {t: SPACE, h: func}
+    - {t: '0', h: nums}
+    - TAB
+  navi:
+  - - ''
+    - ''
+    - LS(TAB)
+    - '&swap'
+    - ''
+    - PG UP
+    - {t: BSPC, h: LC(BSPC)}
+    - {t: UP, h: LC(HOME)}
+    - {t: DEL, h: LC(DEL)}
+    - ''
+  - - {t: LGUI, h: sticky}
+    - {t: LALT, h: sticky}
+    - {t: LCTRL, h: sticky}
+    - {t: LSHFT, h: sticky}
+    - ''
+    - PG DN
+    - {t: LEFT, h: HOME}
+    - {t: DOWN, h: LC(END)}
+    - {t: RIGHT, h: END}
+    - RET
+  - ['', '', '', '', '', INS, TAB, <, '>', '']
+  - - {type: held}
+    - ''
+    - ''
+    - CANCEL
+  maus:
+  - ['', LEFT BUTTON, MIDDLE BUTTON, RIGHT BUTTON, '', '', SCRLL UP, MAUS UP, SCRLL DOWN, '']
+  - ['', '', '', '', '', SCRLL LEFT, MAUS LEFT, MAUS DOWN, MAUS RIGHT, SCRLL RIGHT]
+  - ['', '', '', '', '', '', '', '', '', '']
+  - ['', '', LEFT BUTTON, RIGHT BUTTON]
+  func:
+  - ['', F7, F8, F9, F10, PP, MUTE, VOL DN, VOL UP, '']
+  - ['', F4, F5, F6, F11, BRI MIN, BRI DN, BRI UP, BRI MAX, '']
+  - ['', F1, F2, F3, F12, '', '', '', '', '']
+  - - ''
+    - {type: held}
+    - ''
+    - ''
+  nums:
+  - ['', '7', '8', '9', '', '', '', '', '', '']
+  - - {t: '0', h: LGUI}
+    - {t: '4', h: LALT}
+    - {t: '5', h: LCTRL}
+    - {t: '6', h: LSHFT}
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+    - ''
+  - ['', '1', '2', '3', '', '', '', '', '', '']
+  - - ''
+    - ''
+    - {type: held}
+    - ''
+  util:
+  - [BT 0, BT 1, BT 2, BT 3, BT CLR, '', '', '', '', '']
+  - ['', '', '', '', BOOT, BOOT, '', '', '', '']
+  - ['', '', '', '', RESET, RESET, '', '', '', '']
+  - ['', '', '', '']
+combos:
+- p: [1, 2]
+  k: ESC
+  l: [base, navi, nums]
+- p: [2, 3]
+  k: TAB
+  l: [base, navi, nums]
+- p: [1, 3]
+  k: maus
+  a: "top"
+  o: 0.6
+  l: [base, navi, nums]
+- p: [12, 13]
+  k: {t: ENTER, h: "???"}
+  l: [base, navi, nums]
+- p: [11, 12]
+  k: {t: '0', h: "repeat"}
+  l: [base, navi, nums]
+- p: [21, 23]
+  k: "CUT"
+  a: "bottom"
+  o: 0.2
+  l: [base, navi, nums]
+- p: [21, 22]
+  k: "COPY"
+  l: [base, navi, nums]
+- p: [22, 23]
+  k: "PASTE"
+  l: [base, navi, nums]
+- p: [6, 7]
+  k: '{'
+  l: [base, navi, nums]
+- p: [7, 8]
+  k: '}'
+  l: [base, navi, nums]
+- p: [16, 17]
+  k: {t: (, h: RS(LCTRL)}
+  l: [base, navi, nums]
+- p: [17, 18]
+  k: {t: ), h: LA(LCTRL)}
+  l: [base, navi, nums]
+- p: [26, 27]
+  k: '['
+  l: [base, navi, nums]
+- p: [27, 28]
+  k: ']'
+  l: [base, navi, nums]
+- p: [1, 11]
+  k: '@'
+  l: [base, navi, nums]
+- p: [2, 12]
+  k: '#'
+  l: [base, navi, nums]
+- p: [3, 13]
+  k: $
+  l: [base, navi, nums]
+- p: [4, 14]
+  k: '%'
+  l: [base, navi, nums]
+- p: [5, 15]
+  k: ^
+  l: [base, navi, nums]
+- p: [6, 16]
+  k: +
+  l: [base, navi, nums]
+- p: [7, 17]
+  k: '*'
+  l: [base, navi, nums]
+- p: [8, 18]
+  k: '&'
+  l: [base, navi, nums]
+- p: [11, 21]
+  k: '`'
+  l: [base, navi, nums]
+- p: [12, 22]
+  k: \
+  l: [base, navi, nums]
+- p: [13, 23]
+  k: '='
+  l: [base, navi, nums]
+- p: [14, 24]
+  k: '~'
+  l: [base, navi, nums]
+- p: [15, 25]
+  k: _
+  l: [base, navi, nums]
+- p: [16, 26]
+  k: '-'
+  l: [base, navi, nums]
+- p: [17, 27]
+  k: /
+  l: [base, navi, nums]
+- p: [18, 28]
+  k: '|'
+  l: [base, navi, nums]
