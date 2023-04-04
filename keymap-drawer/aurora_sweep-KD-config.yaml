@@ -172,14 +172,11 @@ parse_config:
     "&mwh SCROLL_VERT(100)": "SCRLL DOWN",
     "&mwh SCROLL_HOR(-100)": "SCRLL LEFT",
     "&mwh SCROLL_HOR(100)": "SCRLL RIGHT",
-    "&comma_morph": "SEMI COMMA",
-    "&dot_morph": "COLON PERIOD",
-    "&qexcl": "EXCL QUEST",
+    "&comma_morph": "; ,",
+    "&dot_morph": ": .",
+    "&qexcl": "! ?",
     "&bootloader": "BOOT",
     "&reset": "RESET",
-    LC(X): "CUT",
-    "LC(C)": "Copy",
-    "LC(V)": "PASTE",
     "LS(LCTRL)": "repeat",
     "LC(BSPC)": "del word"
   }
@@ -243,9 +240,9 @@ parse_config:
     RPAR: )
     SEMI: ;
     SEMICOLON: ;
-    SINGLE_QUOTE: ''''
+    SINGLE_QUOTE: '" '''
     SLASH: /
-    SQT: ''''
+    SQT: '" '''
     STAR: '*'
     TILDE: '~'
     TILDE2: '~'
