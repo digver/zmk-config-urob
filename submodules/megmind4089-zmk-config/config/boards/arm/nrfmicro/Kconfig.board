@@ -1,0 +1,26 @@
+# nrfmicro board configuration
+
+# Copyright (c) 2022 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+
+config BOARD_NRFMICRO
+	bool "nrfmicro"
+	depends on SOC_NRF52840_QIAA
+
+config BOARD_NRFMICRO_1_3_0
+	bool "nrfmicro_1_3_0"
+	depends on BOARD_NRFMICRO
+
+config BOARD_NRFMICRO_1_4_0
+	bool "nrfmicro_1_4_0"
+	depends on BOARD_NRFMICRO
+
+config BOARD_NRFMICRO33
+	bool "nrfmicro33"
+	depends on SOC_NRF52833_QIAA
+
+config BOARD_NRFMICRO33_1_4_0
+	bool "nrfmicro33_1_4_0"
+	depends on BOARD_NRFMICRO33
+
