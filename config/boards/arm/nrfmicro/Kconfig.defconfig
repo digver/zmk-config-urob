@@ -1,0 +1,46 @@
+# Electronut Labs Papyr board configuration
+
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if (BOARD_NRFMICRO || BOARD_NRFMICRO33)
+
+if BOARD_NRFMICRO
+config BOARD
+	default "nrfmicro"
+endif
+
+if BOARD_NRFMICRO33
+config BOARD
+	default "nrfmicro33"
+endif
+
+if USB
+
+config USB_NRFX
+	default y
+
+config USB_DEVICE_STACK
+	default y
+
+endif # USB
+
+config BT_CTLR
+	default BT
+
+config ZMK_BLE
+	default y
+
+config ZMK_USB
+	default y
+
+config PINMUX
+	default y
+
+config ZMK_BATTERY_VOLTAGE_DIVIDER
+	default y
+
+config BOARD_NRFMICRO_CHARGER
+	default y
+
+endif # BOARD_NRFMICRO || BOARD_NRFMICRO33
