@@ -4,12 +4,12 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
-    - name: megamind4089
+    - name: megamind
       url-base: https://github.com/megamind4089
   projects:
     - name: zmk
-      remote: megamind4089
-      revision: mine
+      remote: urob
+      revision: main
       import: app/west.yml
   self:
     path: config
