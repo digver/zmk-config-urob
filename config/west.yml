@@ -7,9 +7,9 @@ manifest:
     - name: megamind
       url-base: https://github.com/megamind4089
     - name: digver
-      url-base: https://github.com/digver/zmk-urob
+      url-base: https://github.com/digver
   projects:
-    - name: zmk
+    - name: zmk-urob
       remote: digver
       revision: digver
       import: app/west.yml
