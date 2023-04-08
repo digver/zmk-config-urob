@@ -6,10 +6,12 @@ manifest:
       url-base: https://github.com/urob
     - name: megamind
       url-base: https://github.com/megamind4089
+    - name: digver
+      url-base: https://github.com/digver/zmk-urob
   projects:
     - name: zmk
-      remote: urob
-      revision: main-3.0
+      remote: digver
+      revision: digver
       import: app/west.yml
   self:
     path: config
