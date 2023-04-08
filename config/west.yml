@@ -9,9 +9,9 @@ manifest:
     - name: digver
       url-base: https://github.com/digver
   projects:
-    - name: zmk-urob
-      remote: digver
-      revision: digver
+    - name: zmk
+      remote: urob
+      revision: main
       import: app/west.yml
   self:
     path: config
