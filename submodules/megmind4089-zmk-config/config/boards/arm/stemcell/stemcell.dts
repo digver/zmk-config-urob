@@ -29,6 +29,7 @@
 	current-speed = <115200>;
 	dmas = <&dma2 7 4 0x28440 0x3  &dma2 2 4 0x28480 0x3>;
 	dma-names = "tx", "rx";
+	pinctrl-names = "default";
 	status = "disabled";
 };
 
@@ -38,15 +39,19 @@
 	current-speed = <115200>;
 	dmas = <&dma1 6 4 0x28440 0x3  &dma1 5 4 0x28480 0x3>;
 	dma-names = "tx", "rx";
+	pinctrl-names = "default";
 	status = "disabled";
 };
 
-&i2c1 {
+i2c1 {
 	pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb7>;
+	pinctrl-names = "default";
+	status = "okay";
 };
 
 &usbotg_fs {
 	pinctrl-0 = <&usb_otg_fs_dm_pa11 &usb_otg_fs_dp_pa12>;
+	pinctrl-names = "default";
 	status = "okay";
 };
 

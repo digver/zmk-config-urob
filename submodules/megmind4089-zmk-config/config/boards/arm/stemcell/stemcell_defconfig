@@ -15,6 +15,9 @@ CONFIG_ARM_MPU=y
 # enable pinmux
 CONFIG_PINMUX=y
 
+# enable pinctrl
+CONFIG_PINCTRL=y
+
 # enable GPIO
 CONFIG_GPIO=y
 
