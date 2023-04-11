@@ -43,32 +43,6 @@
 	status = "disabled";
 };
 
-
-/*
- * Originally usart1 was used for the console. But above it is
- * configured for single-wire and disabled.
- *
- *  - Can it also simply be reused for cdc-acm-uart by just adding
- *    &usbd as done below?
- *  - Or does usart1 need to be configured to use both the tx and rx pins?
- *  - If a different usart must used would that be usart6 that
- *    is defined in st/f4/stm32f4.dtsi
- */
-&usart6 {
-	pinctrl-0 = <&usart1_tx_pb6 &usart1_rx_pb7>;
-	pinctrl-names = "default";
-	status = "okay";
-	current-speed = <115200>;
-};
-
-&usbd {
-  status = "okay";
-  cdc_acm_uart: cdc_acm_uart {
-    compatible = "zephyr,cdc-acm-uart";
-    label = "CDC_ACM_0";
-  };
-};
-
 &i2c1 {
 	pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb7>;
 	pinctrl-names = "default";
@@ -79,6 +53,14 @@
 	pinctrl-0 = <&usb_otg_fs_dm_pa11 &usb_otg_fs_dp_pa12>;
 	pinctrl-names = "default";
 	status = "okay";
+};
+
+&usbotg_fs {
+  status = "okay";
+  cdc_acm_uart: cdc_acm_uart {
+    compatible = "zephyr,cdc-acm-uart";
+    label = "CDC_ACM_0";
+  };
 };
 
 &rtc {
