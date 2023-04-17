@@ -1,3 +1,17 @@
+# Notes on using the STemCell
+
+- Several changes needed to be made to magamind4089's STeMCell code to bring it
+up to date with ZMK and Zephyr. Changed are in the stem-01 branch.
+  - The clock configuration has been moved from def_config to the dts file
+  - Cosole logging is switched over to use CDC ACM UART
+- Jumpers are needed for columns 8 - 1
+  - On the backside solder the middle to left side of _TX0, RX0, SDA, and SCL_
+  - [Soldering: STeMcell Jumpers](https://github.com/sadekbaroudi/fingerpunch/tree/master/controllers/stemcell#soldering)
+- Swap PA5 and PA7 in pro_micro.dtsi for SPI compatability
+  - [STMCell: Pinout](https://megamind4089.github.io/STeMCell/pinout/)
+
+## ___Below are urob's notes___
+
 # urob's zmk-config
 
 This is my personal [ZMK firmware](https://github.com/zmkfirmware/zmk/) configuration.
