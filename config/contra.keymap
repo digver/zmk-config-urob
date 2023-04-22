@@ -5,12 +5,13 @@
 #include "../zmk-nodefree-config/keypos_def/keypos_48keys_wide.h"
 
 /* map Contra's extra keys */
-#define X_MT  &kp ESC      &kp DEL                    // top row, middle
-#define X_MM  &smart_mouse &tog NAV                   // middle row, middle
-#define X_MB  &tog FUNC    &tog BASE                  // bottom row, middle
-#define X_LH  &kp LGUI     &kp K_VOL_DN &kp K_VOL_UP  // thumb row, left
-#define X_MH  &kp ENTER    &none                      // thumb row, middle
-#define X_RH  &kp PG_DN    &kp PG_UP    &kp K_APP     // thumb row, right
+#define X_MT  &kp ESC    &kp DEL                    // top row, middle
+#define X_MM  NAV_DN     NAV_UP                   // middle row, middle
+#define X_MB  NAV_LFT    NAV_RHT             // bottom row, middle
+#define X_MH  &kp ENTER  &none                      // thumb row, middle
+
+#define X_LH  &kp LGUI   &kp K_VOL_DN &kp K_VOL_UP  // thumb row, left
+#define X_RH  &kp PG_DN  &kp PG_UP    &kp K_APP     // thumb row, right
 
 /* source the main keymap */
 #include "base.keymap"
