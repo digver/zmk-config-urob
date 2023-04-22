@@ -6,7 +6,7 @@
 
 /* map Contra's extra keys */
 #define X_MT  &kp ESC    &kp DEL                    // top row, middle
-#define X_MM  NAV_DN     NAV_UP                   // middle row, middle
+#define X_MM  NAV_DWN     NAV_UP                   // middle row, middle
 #define X_MB  NAV_LFT    NAV_RHT             // bottom row, middle
 #define X_MH  &kp ENTER  &none                      // thumb row, middle
 

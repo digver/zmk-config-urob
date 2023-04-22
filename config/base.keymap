@@ -1,4 +1,4 @@
-#include <behaviors.dtsi>
+me#include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
 #if CONFIG_WIRELESS
@@ -20,6 +20,12 @@
 #define UTIL 5
 #define UNI  6
 
+#define NAV_LFT   &mt HOME     LEFT    // tap: left  | long-tap: beginning of line
+#define NAV_RHT   &mt END      RIGHT   // tap: right | long-tap: end       of line
+#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
+#define NAV_DWN   &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
+#define NAV_BSC   &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
+#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
 #include "combos.dtsi"  // requires layer aliases
 #include "mouse.dtsi"
@@ -82,13 +88,6 @@ MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)    // "    "   "   "
 &mt { MT_CORE };
 ZMK_BEHAVIOR(mt_home, hold_tap, bindings = <&masked_home>, <&kp>; MT_CORE)
 ZMK_BEHAVIOR(mt_end,  hold_tap,  bindings = <&masked_end>, <&kp>; MT_CORE)
-
-#define NAV_LFT   &mt HOME     LEFT    // tap: left  | long-tap: beginning of line
-#define NAV_RHT   &mt END      RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
-#define NAV_DWN   &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
-#define NAV_BSC   &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
-#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
 // mask CTRL when holding left/right to avoid accidental jumps to beginning/end of document
 #define MASK_MODS(NAME, MODS, BINDING) \
