@@ -1,0 +1,40 @@
+board: stm32: blackpill_f411ce
+
+# SYSCLK selection
+CONFIG_CLOCK_STM32_SYSCLK_SRC_PLL=y
+# HSE configuration
+CONFIG_CLOCK_STM32_HSE_CLOCK=25000000
+# use HSE as PLL input
+CONFIG_CLOCK_STM32_PLL_SRC_HSE=y
+# Produce 96MHz clock at PLL output
+CONFIG_CLOCK_STM32_PLL_M_DIVISOR=25
+CONFIG_CLOCK_STM32_PLL_N_MULTIPLIER=192
+CONFIG_CLOCK_STM32_PLL_P_DIVISOR=2
+# Produce 48 MHz clock for USB
+CONFIG_CLOCK_STM32_PLL_Q_DIVISOR=4
+CONFIG_CLOCK_STM32_AHB_PRESCALER=1
+CONFIG_CLOCK_STM32_APB1_PRESCALER=2
+CONFIG_CLOCK_STM32_APB2_PRESCALER=1
+
+
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(25)>;
+	status = "okay";
+};
+
+&pll {
+	div-m = <25>;
+	mul-n = <192>;
+	div-p = <2>;
+	div-q = <4>;
+	clocks = <&clk_hse>;
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(96)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <2>;
+	apb2-prescaler = <1>;
+};

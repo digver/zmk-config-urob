@@ -1,0 +1,70 @@
+board: stm32f411e_disco
+
+# SYSCLK selection
+CONFIG_CLOCK_STM32_SYSCLK_SRC_PLL=y
+# HSE configuration
+CONFIG_CLOCK_STM32_HSE_CLOCK=8000000
+# use HSE as PLL input
+CONFIG_CLOCK_STM32_PLL_SRC_HSE=y
+# Produce 96MHz clock at PLL output
+CONFIG_CLOCK_STM32_PLL_M_DIVISOR=4
+CONFIG_CLOCK_STM32_PLL_N_MULTIPLIER=96
+CONFIG_CLOCK_STM32_PLL_P_DIVISOR=2
+# Produce 48MHz clock for USB
+CONFIG_CLOCK_STM32_PLL_Q_DIVISOR=4
+CONFIG_CLOCK_STM32_AHB_PRESCALER=1
+CONFIG_CLOCK_STM32_APB1_PRESCALER=2
+CONFIG_CLOCK_STM32_APB2_PRESCALER=1
+
+
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "okay";
+};
+
+&pll {
+	div-m = <4>;
+	mul-n = <96>;
+	div-p = <2>;
+	div-q = <4>;
+	clocks = <&clk_hse>;
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(96)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <2>;
+	apb2-prescaler = <1>;
+};
+
+
+&usart2 {
+	pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
+	pinctrl-names = "default";
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&i2c1 {
+	pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb9>;
+	pinctrl-names = "default";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	lsm303agr_magn: lsm303agr-magn@1e {
+		compatible = "st,lis2mdl", "st,lsm303agr-magn";
+		status = "okay";
+		reg = <0x1e>;
+		irq-gpios = <&gpioe 2 GPIO_ACTIVE_HIGH>;
+	};
+
+	lsm303agr_accel: lsm303agr-accel@19 {
+		compatible = "st,lis2dh", "st,lsm303agr-accel";
+		status = "okay";
+		reg = <0x19>;
+		irq-gpios = <&gpioe 4 GPIO_ACTIVE_HIGH>,
+			  <&gpioe 5 GPIO_ACTIVE_HIGH>;
+	};
+};

@@ -1,0 +1,48 @@
+board: STeMCell
+
+# SYSCLK selection
+CONFIG_CLOCK_STM32_SYSCLK_SRC_PLL=y
+# HSE configuration
+CONFIG_CLOCK_STM32_HSE_CLOCK=8000000
+# use HSE as PLL input
+# CONFIG_CLOCK_STM32_PLL_SRC_HSE=y
+# Produce 168MHz clock at PLL output
+CONFIG_CLOCK_STM32_PLL_M_DIVISOR=8
+CONFIG_CLOCK_STM32_PLL_N_MULTIPLIER=336
+CONFIG_CLOCK_STM32_PLL_P_DIVISOR=4
+# Produce 48MHz clock for USB
+CONFIG_CLOCK_STM32_PLL_Q_DIVISOR=7
+CONFIG_CLOCK_STM32_AHB_PRESCALER=1
+CONFIG_CLOCK_STM32_APB1_PRESCALER=2
+CONFIG_CLOCK_STM32_APB2_PRESCALER=1
+
+
+&clk_hse {
+	clock-frequency = <DT_FREQ_M(8)>;
+	status = "okay";
+};
+
+&pll {
+	div-m = <8>;
+	mul-n = <336>;
+	div-p = <4>;
+	div-q = <7>;
+	clocks = <&clk_hse>;
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(168)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <2>;
+	apb2-prescaler = <1>;
+};
+
+
+i2c1 {
+	pinctrl-0 = <&i2c1_scl_pb6 &i2c1_sda_pb7>;
+	pinctrl-names = "default";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
