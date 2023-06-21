@@ -1,0 +1,138 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define BASE  0
+#define FUNC  1
+
+// --------- Key position numbers ---------
+//
+//     The Tofu65 2.0 is a 65% keyboard with a switch matrix of 5 rows and 15
+// columns. Even so, not every row in the matrix has 15 switches. This means
+// ZMK requies a transform to ensure the desired keycode is mapped to the
+// correct switch. However, in the end ZMK does not work in terms of rows and
+// columns. Instead it identifies the key positions sequencially, starting
+// from zero. See below for an approximate representaion of the key number in
+// relation to the physical keyboard.
+//
+//     In general simple keymaps do not require knowing the key postion, but
+// some advanced behaviors do. For example, instead of having an entire layer
+// for nothing but resetting the keyboard and accessing the bootloader,
+// combos are configued to provide the same functions.
+//
+// ---------- Tofu65 2.0 key switch positions ----------
+//
+// -------------------------------------------------------------------------------------------------
+// |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10  |  11  |  12  |   13   |  14 |
+// -------------------------------------------------------------------------------------------------
+// |  15    |  16 |  17 |  18 |  19 |  20 |  21 |  22 |  23 |  24 |  24 |  26 |  27 |   28   |  29 |
+// -------------------------------------------------------------------------------------------------
+// |  30     |  31 |  32 |  33 |  34 |  35 |  36 |  37 |  38 |  39 |  40 |  41  |     42     |  43 |
+// -------------------------------------------------------------------------------------------------
+// |     44     |  45 |  46 |  47 |  48 |  49 |  50 |  51 |  52 |  53 |  54 |    55   |  56  |  57 |
+// -------------------------------------------------------------------------------------------------
+// |   58  |   59  |   60  |                   61              |  62 |  63 |  64 |  65 |  66 |  67 |
+// -------------------------------------------------------------------------------------------------
+
+
+/ {
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
+    //     util_layer {
+    //         if-layers = <BASE FUNC>;
+    //         then-layer = <UTIL>;
+    //     };
+    // };
+
+    combos {
+        compatible = "zmk,combos";
+
+        // BACKSPACE + LCTRL + LALT = &sys_reset
+        combo_bootloader {
+            timeout-ms = <100>;
+            key-positions = <13 58 60>;
+            bindings = <&sys_reset>;
+        };
+
+        // RETURN + LCTRL + LALT +  = &bootloader
+        combo_sys_reset {
+            timeout-ms = <100>;
+            key-positions = <42 58 60>;
+            bindings = <&bootloader>;
+        };
+    };
+
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base {
+
+// --------- Colemak-dh Layout ---------
+// Layer 0
+// ---------------------------------------------------------------------------------------------------
+// | ESC |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  | -   |  =  |    BKSP   | GRAVE |
+// ---------------------------------------------------------------------------------------------------
+// | TAB    |  Q  |  W  |  F  |  P  |  B  |  J  |  L  |  U  |  Y  |  ;  |  [  |  ]   |   \   |  DEL  |
+// ---------------------------------------------------------------------------------------------------
+// | CAPS    |  A  |  R  |  S  |  T  |  G  |  M  |  N  |  E  |  I  |  O  |  '   |    ENTER   | PG_UP |
+// --------------------------------------------------------------------------------------------------
+// | LSHIFT     |  X  |  C  |  D  |  V  |  Z  |  K  |  H  |  ,  |  .  |  /  |    RSHFT |  ↑  | PG_DN |
+// ---------------------------------------------------------------------------------------------------
+// | LCTL | LGUI | LALT |                     SPACE         | RALT | FUNC | RCTL |  <- |  ↓  |  ->   |
+// -------------------------------------------------------------------------------------------------
+            bindings = <
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS &kp EQUAL  &kp BKSP   &kp GRAVE
+&kp TAB   &kp Q   &kp W   &kp F   &kp P   &kp B   &kp J   &kp L   &kp U   &kp Y  &kp SEMI  &kp LBKT  &kp RBKT   &kp BSLH &kp DEL
+&kp CLCK   &kp A   &kp R   &kp S   &kp T   &kp G   &kp M   &kp N   &kp E   &kp I  &kp O      &kp SQT      &kp ENTER      &kp PG_UP
+&kp LSHFT   &kp X   &kp C   &kp D   &kp V   &kp Z   &kp K   &kp H   &kp COMMA &kp DOT &kp FSLH  &kp RSHFT     &kp UP     &kp PG_DN
+&kp LCTRL   &kp LGUI    &kp LALT    &kp SPACE                &kp RALT  &lt FUNC K_APP  &kp RCTRL   &kp LEFT   &kp DOWN   &kp RIGHT
+            >;
+        };
+
+        func {
+// -------- Layout ---------
+// Layer 1
+// ---------------------------------------------------------------------------------------------------
+// | ESC | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10 | F11 | F12 |    ---     | ---  |
+// ---------------------------------------------------------------------------------------------------
+// | ---    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | scroll lock | pause |   ---   | HOME |
+// ---------------------------------------------------------------------------------------------------
+// | CAPS     |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |     ---     | END  |
+// ---------------------------------------------------------------------------------------------------
+// | LSHIFT     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |      -----      | VOL UP  | MUTE |
+// ---------------------------------------------------------------------------------------------------
+// | ---- | TRANS | ---- |                  ----         |  -- | TRANS | -- | PREV  | VOL DN  | NEXT |
+// ---------------------------------------------------------------------------------------------------
+            bindings = <
+&trans &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12   &trans        &trans
+&trans  &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &kp SLCK  &kp PAUSE_BREAK  &trans  &kp HOME
+&trans    &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans            &trans         &kp END
+&trans      &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans     &trans   &trans        &trans   &kp C_VOL_UP  &kp C_MUTE
+&trans     &trans    &trans               &trans                       &trans     &trans   &trans  &kp C_PREV   &kp C_VOL_DN  &kp C_NEXT
+            >;
+        };
+
+//         UTIL {
+// // -------- Layout ---------
+// // Layer 2
+// // ---------------------------------------------------------------------------------------------------
+// // |  ESC  |  --  |  -- |  -- |  --  |  -- |  -- |  --  |  -- |  -- |  -- |  -- |   -- |   --   | -- |
+// // ---------------------------------------------------------------------------------------------------
+// // | ---   |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- | bootloader | -- |
+// // ---------------------------------------------------------------------------------------------------
+// // | ---    |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |   sys_reset     | -- |
+// // ---------------------------------------------------------------------------------------------------
+// // | ---     |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -- |  -----  |   ---      | -- |
+// // ---------------------------------------------------------------------------------------------------
+// // | ---- | TRANS | ---- |                     ----                 | -- | TRANS | -- | -- | -- | -- |
+// // ---------------------------------------------------------------------------------------------------
+//             bindings = <
+// &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
+// &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bootloader  &trans
+// &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &sys_reset        &trans
+// &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans
+// &trans   &trans   &trans                  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+//             >;
+//        };
+    };
+};

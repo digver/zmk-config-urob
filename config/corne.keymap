@@ -1,0 +1,21 @@
+/* activate bluetooth */
+#define CONFIG_WIRELESS 1
+
+/* source keypos definitions */
+#include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
+
+/* map Corne's extra keys  */
+/* left (central) side     */
+#define X_LT  &kp ESC      // left top    key
+#define X_LM  &kp TAB      // left middle key
+#define X_LB  &kp LGUI     // left bottom key
+#define X_LH  &smart_mouse // left thumb  key
+
+/* right (central) side    */
+#define X_LT  &kp DEL      // right top    key
+#define X_LM  &kp BSPC     // right middle key
+#define X_LB  &kp K_APP    // right bottom key
+#define X_LH  &kp LGUI     // right thumb  key
+
+/* source the main keymap */
+#include "base.keymap"
